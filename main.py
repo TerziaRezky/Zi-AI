@@ -16,6 +16,14 @@ load_dotenv()
 
 app = Flask(__name__)
 
+@app.route('/health')
+def health_check():
+    return jsonify({
+        "status": "OK",
+        "groq_ready": bool(os.getenv("GROQ_API_KEY")),
+        "python_version": sys.version
+    })
+
 # Configuration
 class Config:
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
