@@ -146,4 +146,5 @@ def not_found(e):
     return render_template('404.html'), 404
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=os.getenv('FLASK_DEBUG', False))
+    port = int(os.environ.get("PORT", 3000))
+    app.run(host='0.0.0.0', port=port)  # Wajib untuk Northflank
